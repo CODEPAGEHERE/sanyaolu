@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Api Endpoint Test </title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    button {
+      margin-bottom: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    form {
+      margin-bottom: 20px;
+      display: none; /* Initially hide all forms */
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input, button, textarea {
+      margin-bottom: 10px;
+      padding: 8px;
+      width: 100%;
+      max-width: 400px;
+      font-size: 14px;
+    }
+    pre {
+      background: #f4f4f4;
+      padding: 10px;
+      border: 1px solid #ddd;
+      overflow: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1> Smile...</h1>
+
+  <!-- Buttons to Toggle Forms -->
+  <button data-form="greetForm">Greeting Endpoint</button>
+  <button data-form="todoForm">Add to list</button>
+  <button data-form="getTodosForm">Get Your List</button>
+  <button data-form="signupForm">Signup</button>
+  <button data-form="loginForm">Login</button>
+  <button data-form="textForm">Text with Color</button>
+
+  <!-- Greet Endpoint -->
+  <form id="greetForm">
+    <h2>Greet Endpoint</h2>
+    <label for="name">Name:</label>
+    <input type="text" id="greetName" placeholder="Enter your name">
+    <button type="submit">Greet</button>
+    <pre id="greetResponse"></pre>
+  </form>
+
+  <!-- Todo Endpoint -->
+  <form id="todoForm">
+    <h2>Add Todo</h2>
+    <label for="todoTask">Task:</label>
+    <input type="text" id="todoTask" placeholder="Enter a task">
+    <button type="submit">Add</button>
+    <pre id="todoResponse"></pre>
+  </form>
+
+  <form id="getTodosForm">
+    <h2>Get Todos</h2>
+    <button type="submit">Fetch</button>
+    <pre id="getTodosResponse"></pre>
+  </form>
+
+  <!-- Signup Endpoint -->
+  <form id="signupForm">
+    <h2>Signup</h2>
+    <label for="signupUsername">Username:</label>
+    <input type="text" id="signupUsername" placeholder="Enter username">
+    <label for="signupPassword">Password:</label>
+    <input type="password" id="signupPassword" placeholder="Enter password">
+    <button type="submit">Signup</button>
+    <pre id="signupResponse"></pre>
+  </form>
+
+  <!-- Login Endpoint -->
+  <form id="loginForm">
+    <h2>Login</h2>
+    <label for="loginUsername">Username:</label>
+    <input type="text" id="loginUsername" placeholder="Enter username">
+    <label for="loginPassword">Password:</label>
+    <input type="password" id="loginPassword" placeholder="Enter password">
+    <button type="submit">Login</button>
+    <pre id="loginResponse"></pre>
+  </form>
+
+  <!-- Text with Colors Endpoint -->
+  <!-- Text with Colors Endpoint 
+<form id="textForm">
+    <h2>Create Text with Color</h2>
+    <label for="text">Text:</label>
+    <input type="text" id="text" placeholder="Enter text" required>
+    
+    <label for="color">Color:</label>
+    <input type="color" id="color" value="#000000">
+    
+    <button type="submit">Create Text</button>
+    <pre id="textResponse"></pre>
+  </form> -->
+  
+  <script>
+    // Base URL for API
+    const baseUrl = "http://localhost:3001/api"; // Update with your local server URL
+
+    // Function to toggle forms
+    document.querySelectorAll("button[data-form]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const formId = button.getAttribute("data-form");
+        const form = document.getElementById(formId);
+
+        // Toggle visibility of the form
+        if (form.style.display === "none" || form.style.display === "") {
+          document.querySelectorAll("form").forEach((f) => (f.style.display = "none")); // Hide all forms
+          form.style.display = "block"; // Show the selected form
+        } else {
+          form.style.display = "none"; // Hide the form if it's already visible
+        }
+      });
+    });
+
+    // Greet Endpoint
+    document.getElementById("greetForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = document.getElementById("greetName").value;
+      const response = await fetch(`${baseUrl}/greet?name=${name}`);
+      const data = await response.json();
+      document.getElementById("greetResponse").textContent = JSON.stringify(data, null, 2);
+    });
+
+    // Todo - Add
+    document.getElementById("todoForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const task = document.getElementById("todoTask").value;
+      const response = await fetch(`${baseUrl}/todos`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ task }),
+      });
+      const data = await response.json();
+      document.getElementById("todoResponse").textContent = JSON.stringify(data, null, 2);
+    });
+
+    // Todo - Get
+    document.getElementById("getTodosForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const response = await fetch(`${baseUrl}/todos`);
+      const data = await response.json();
+      document.getElementById("getTodosResponse").textContent = JSON.stringify(data, null, 2);
+    });
+
+    // Signup Endpoint
+    document.getElementById("signupForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const username = document.getElementById("signupUsername").value;
+      const password = document.getElementById("signupPassword").value;
+      const response = await fetch(`${baseUrl}/signup`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
+      const data = await response.json();
+      document.getElementById("signupResponse").textContent = JSON.stringify(data, null, 2);
+    });
+
+    // Login Endpoint
+    document.getElementById("loginForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const username = document.getElementById("loginUsername").value;
+      const password = document.getElementById("loginPassword").value;
+      const response = await fetch(`${baseUrl}/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
+      const data = await response.json();
+      document.getElementById("loginResponse").textContent = JSON.stringify(data, null, 2);
+    });
+
+    //Text with Colors Endpoint
+    document.getElementById("textForm").addEventListener("submit", async (e) => {
+    e.preventDefault(); // Prevent form submission
+    
+    // Get the text and color values from the form
+    const text = document.getElementById("text").value;
+    const color = document.getElementById("color").value;
+
+    // Make sure the text is not empty
+    if (!text) {
+      document.getElementById("textResponse").textContent = "Error: Text is required";
+      return;
+    }
+
+    try {
+      // Send the request to the backend API
+      const response = await fetch(`${baseUrl}/text?text=${encodeURIComponent(text)}&color=${encodeURIComponent(color)}`);
+      const data = await response.json();
+
+      // Display the response data in the <pre> tag
+      document.getElementById("textResponse").textContent = JSON.stringify(data, null, 2);
+    } catch (error) {
+      // Handle any errors (e.g., network issues)
+      document.getElementById("textResponse").textContent = `Error: ${error.message}`;
+    }
+  }); 
+  </script>
+
+  <p style="display: block; text-align: center; color: chocolate;"><b>- Development Endpoint Test By : HappyCode; - </b></p>
+</body>
+</html>
