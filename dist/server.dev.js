@@ -2,14 +2,12 @@
 
 var express = require("express");
 
-var bodyParser = require("body-parser");
-
-var app = express();
-var port = 3001;
-
 var path = require("path");
 
-app.use(bodyParser.json()); // In-memory storage for todos and users
+var app = express();
+var port = process.env.PORT || 3001; // Middleware for parsing JSON requests
+
+app.use(express.json()); // In-memory storage for todos and users
 
 var todos = [];
 var users = []; // Greet endpoint
@@ -87,11 +85,17 @@ app.get("/api/text", function (req, res) {
     html: "<p style=\"color: ".concat(color, ";\">").concat(text, "</p>"),
     preview: "Your text: \"".concat(text, "\" in color: \"").concat(color, "\"")
   });
-});
+}); // Serve the static index.html file
+
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "index.html"));
-}); // Start the server
+}); // Start the server (only for local development)
 
-app.listen(port, function () {
-  console.log("Server running at http://localhost:".concat(port));
-});
+if (process.env.NODE_ENV !== "production") {
+  app.listen(port, function () {
+    console.log("Server running at http://localhost:".concat(port));
+  });
+} // Export the app for Vercel
+
+
+module.exports = app;

@@ -1,19 +1,15 @@
 const express = require("express");
-const bodyParser = require("body-parser");
-
-const app = express();
-const port = 3001;
-
 const path = require("path");
 
+const app = express();
+const port = process.env.PORT || 3001;
 
-app.use(bodyParser.json());
-
+// Middleware for parsing JSON requests
+app.use(express.json());
 
 // In-memory storage for todos and users
 let todos = [];
 let users = [];
-
 
 // Greet endpoint
 app.get("/api/greet", (req, res) => {
@@ -66,19 +62,17 @@ app.get("/api/text", (req, res) => {
   });
 });
 
-
-
-
-
+// Serve the static index.html file
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "index.html"));
-  });
-
-  
-
-// Start the server
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
+// Start the server (only for local development)
+if (process.env.NODE_ENV !== "production") {
+  app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
+  });
+}
 
+// Export the app for Vercel
+module.exports = app;

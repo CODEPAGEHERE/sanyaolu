@@ -1,9 +1,10 @@
 {
   "name": "defaulttt",
   "version": "1.0.0",
-  "description": "test work for node.js endpoints",
-  "main": "index.js",
+  "description": "Test work for Node.js endpoints",
+  "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
