@@ -51,7 +51,7 @@
 
     // Greet Endpoint
     document.getElementById("greetBtn").addEventListener("click", async () => {
-      const response = await fetch(`${baseUrl}/greet?name=TestUser`);
+      const response = await fetch(`${baseUrl}/greet?name=Happyuser`);
       const data = await response.json();
       showOutput(data);
     });
