@@ -9,24 +9,24 @@ export default function handler(req, res) {
         description: "Takes User's Name and Greets the user by name. Example: To self test use ==> /api/greet?name=John. ",
       },
       {
-        endpoint: "/api/todos",
+        endpoint: "todo list",
         method: "GET",
-        description: "Fetches the list of todos.",
+        description: "Fetches the list of todos from an array of todolist.",
       },
       {
-        endpoint: "/api/todos",
+        endpoint: "add todos",
         method: "POST",
-        description: "Adds a new todo. Send a JSON body: { task: 'Your task here' }",
+        description: "Adds a new todo to the array of todolist. Send a JSON body: { task: 'Your task here' }",
       },
       {
         endpoint: "/api/signup",
         method: "POST",
-        description: "Registers a new user. Send a JSON body: { username, password }",
+        description: "Registers a new user with credentials. Send a JSON body: { username, password }",
       },
       {
         endpoint: "/api/login",
         method: "POST",
-        description: "Logs in a user. Send a JSON body: { username, password }",
+        description: "Logs in the user  using the registered credentials. Send a JSON body: { username, password }",
       },
       {
         endpoint: "/api/text",
