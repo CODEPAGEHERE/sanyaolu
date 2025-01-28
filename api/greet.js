@@ -1,7 +1,9 @@
 export default function handler(req, res) {
-    const { name = "codex" } = req.query;
-    const message = `Hello, '${name}'! We hope you like this endpoint 👍❤️. Happycode!`;
-    
-    console.log("Generated message:", message); // Log the final message
-    res.status(200).json({ message });
+  const { name = "HappyUser" } = req.query;
+
+  return res.status(200).json({
+    success: true,
+    message: `Hello, ${name}!`,
+    data: { greeting: `Hello, ${name}!` },
+  });
 }
