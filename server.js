@@ -14,7 +14,7 @@ let users = [];
 // Greet endpoint
 app.get("/api/greet", (req, res) => {
   const { name = "World" } = req.query;
-  res.json({ message: `Hello, ${name}!` });
+  res.json({ message: `Hello, ${name}! we hope you like the endpoint samples &#10084; Happycode.` });
 });
 
 // Todo List endpoints
