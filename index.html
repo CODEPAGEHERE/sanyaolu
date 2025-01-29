@@ -1,111 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>API Endpoint Test</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
-    button {
-      margin: 10px 0;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    #output {
-      margin-top: 20px;
-      background: #f4f4f4;
-      padding: 10px;
-      border: 1px solid #ddd;
-      overflow: auto;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation & Tester</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        form { margin-bottom: 20px; }
+        label { display: block; margin-top: 10px; }
+        input, button { margin-top: 5px; padding: 8px; }
+        pre { background: #f4f4f4; padding: 10px; border: 1px solid #ddd; }
+    </style>
 </head>
 <body>
-  <h1>API Endpoint Tester</h1>
 
-  <div>
-    <button id="greetBtn">Test Greet Endpoint</button>
-    <button id="addTodoBtn">Test Add Todo</button>
-    <button id="getTodosBtn">Test Get Todos</button>
-    <button id="signupBtn">Test Signup</button>
-    <button id="loginBtn">Test Login</button>
-    <button id="textBtn">Test Text with Color</button>
-  </div>
+    <h1>API Tester</h1>
 
-  <div id="output">
-    <h3>Output:</h3>
-    <pre id="response"></pre>
-  </div>
+    <!-- GET Todos -->
+    <h2>Fetch Todos</h2>
+    <button id="fetchTodos">Get Todos</button>
+    <pre id="todosResponse"></pre>
 
-  <script>
-    const baseUrl = "https://defaulttt.vercel.app/api"; // Replace with your base URL
+    <!-- POST Todo -->
+    <h2>Add a Todo</h2>
+    <form id="addTodoForm">
+        <label for="todoTask">Task:</label>
+        <input type="text" id="todoTask" required>
+        <button type="submit">Add Todo</button>
+    </form>
+    <pre id="addTodoResponse"></pre>
 
-    // Output function
-    const showOutput = (data) => {
-      document.getElementById("response").textContent = JSON.stringify(data, null, 2);
-    };
+    <script>
+        const baseUrl = "/api"; // Update this if your API is hosted elsewhere
 
-    // Greet Endpoint
-    document.getElementById("greetBtn").addEventListener("click", async () => {
-      const response = await fetch(`${baseUrl}/greet?name=Happyuser`);
-      const data = await response.json();
-      showOutput(data);
-    });
+        // Fetch Todos (GET)
+        document.getElementById("fetchTodos").addEventListener("click", async () => {
+            const response = await fetch(`${baseUrl}/todos`);
+            const data = await response.json();
+            document.getElementById("todosResponse").textContent = JSON.stringify(data, null, 2);
+        });
 
-    // Add Todo Endpoint
-    document.getElementById("addTodoBtn").addEventListener("click", async () => {
-      const response = await fetch(`${baseUrl}/todos`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ task: "Test Task" }),
-      });
-      const data = await response.json();
-      showOutput(data);
-    });
+        // Add Todo (POST)
+        document.getElementById("addTodoForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const task = document.getElementById("todoTask").value;
 
-    // Get Todos Endpoint
-    document.getElementById("getTodosBtn").addEventListener("click", async () => {
-      const response = await fetch(`${baseUrl}/todos`);
-      const data = await response.json();
-      showOutput(data);
-    });
+            const response = await fetch(`${baseUrl}/todos`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ task })
+            });
 
-    // Signup Endpoint
-    document.getElementById("signupBtn").addEventListener("click", async () => {
-      const response = await fetch(`${baseUrl}/signup`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username: "TestUser", password: "password123" }),
-      });
-      const data = await response.json();
-      showOutput(data);
-    });
+            const data = await response.json();
+            document.getElementById("addTodoResponse").textContent = JSON.stringify(data, null, 2);
+        });
+    </script>
 
-    // Login Endpoint
-    document.getElementById("loginBtn").addEventListener("click", async () => {
-      const response = await fetch(`${baseUrl}/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username: "TestUser", password: "password123" }),
-      });
-      const data = await response.json();
-      showOutput(data);
-    });
-
-    // Text with Color Endpoint
-    document.getElementById("textBtn").addEventListener("click", async () => {
-      const response = await fetch(`${baseUrl}/text?text=HelloWorld&color=blue`);
-      const data = await response.json();
-      showOutput(data);
-    });
-  </script>
-
-  <p style="text-align: center; color: chocolate;">
-    <b>- Developed by HappyCode -</b>
-  </p>
 </body>
 </html>
