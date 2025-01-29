@@ -6,7 +6,7 @@ export default function handler(req, res) {
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>API Documentation</title>
+      <title>API Endpoint Documentation</title>
       <style>
         body {
           font-family: Arial, sans-serif;
@@ -56,16 +56,16 @@ export default function handler(req, res) {
     <body>
       <div class="container">
         <h1>API Documentation</h1>
-        <p>Welcome to the API! Below are the available endpoints:</p>
+        <p>Welcome to the Demo Endpoint! Below are the available endpoints:</p>
         
         <div class="endpoint">
           <span class="method GET">GET</span> <a href="/api/greet?name=John">/api/greet</a>
-          <p class="description">Greets the user by name. Example: <code>/api/greet?name=John</code></p>
+          <p class="description">Greets the user by name. Self Test Example: Use=> <code>/api/greet?name=John</code></p>
         </div>
 
         <div class="endpoint">
           <span class="method GET">GET</span> <a href="/api/todos">/api/todos</a>
-          <p class="description">Fetches the list of todos.</p>
+          <p class="description">Fetches the list of added tasks.</p>
         </div>
 
         <div class="endpoint">
