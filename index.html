@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API Documentation & Tester</title>
+    <title>API Tester</title>
     <style>
         body { font-family: Arial, sans-serif; padding: 20px; }
         form { margin-bottom: 20px; }
@@ -16,44 +16,111 @@
 
     <h1>API Tester</h1>
 
-    <!-- GET Todos -->
-    <h2>Fetch Todos</h2>
-    <button id="fetchTodos">Get Todos</button>
-    <pre id="todosResponse"></pre>
+    <!-- 1️⃣ GREET Endpoint -->
+    <h2>Greet User</h2>
+    <form id="greetForm">
+        <label for="greetName">Enter Name:</label>
+        <input type="text" id="greetName" placeholder="Enter your name" required>
+        <button type="submit">Greet</button>
+    </form>
+    <pre id="greetResponse"></pre>
 
-    <!-- POST Todo -->
+    <!-- 2️⃣ ADD TODO -->
     <h2>Add a Todo</h2>
     <form id="addTodoForm">
         <label for="todoTask">Task:</label>
-        <input type="text" id="todoTask" required>
+        <input type="text" id="todoTask" placeholder="Enter a task" required>
         <button type="submit">Add Todo</button>
     </form>
     <pre id="addTodoResponse"></pre>
 
-    <script>
-        const baseUrl = "/api"; // Update this if your API is hosted elsewhere
+    <!-- 3️⃣ GET TODOS -->
+    <h2>Fetch Todos</h2>
+    <button id="fetchTodos">Get Todos</button>
+    <pre id="todosResponse"></pre>
 
-        // Fetch Todos (GET)
+    <!-- 4️⃣ SIGNUP -->
+    <h2>Signup</h2>
+    <form id="signupForm">
+        <label for="signupUsername">Username:</label>
+        <input type="text" id="signupUsername" required>
+        <label for="signupPassword">Password:</label>
+        <input type="password" id="signupPassword" required>
+        <button type="submit">Signup</button>
+    </form>
+    <pre id="signupResponse"></pre>
+
+    <!-- 5️⃣ LOGIN -->
+    <h2>Login</h2>
+    <form id="loginForm">
+        <label for="loginUsername">Username:</label>
+        <input type="text" id="loginUsername" required>
+        <label for="loginPassword">Password:</label>
+        <input type="password" id="loginPassword" required>
+        <button type="submit">Login</button>
+    </form>
+    <pre id="loginResponse"></pre>
+
+    <script>
+        const baseUrl = "/api"; // Change if hosted on another domain
+
+        // 1️⃣ GREET (GET)
+        document.getElementById("greetForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const name = document.getElementById("greetName").value;
+            const response = await fetch(`${baseUrl}/greet?name=${name}`);
+            const data = await response.json();
+            document.getElementById("greetResponse").textContent = JSON.stringify(data, null, 2);
+        });
+
+        // 2️⃣ ADD TODO (POST)
+        document.getElementById("addTodoForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const task = document.getElementById("todoTask").value;
+            const response = await fetch(`${baseUrl}/todos`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ task })
+            });
+            const data = await response.json();
+            document.getElementById("addTodoResponse").textContent = JSON.stringify(data, null, 2);
+        });
+
+        // 3️⃣ GET TODOS (GET)
         document.getElementById("fetchTodos").addEventListener("click", async () => {
             const response = await fetch(`${baseUrl}/todos`);
             const data = await response.json();
             document.getElementById("todosResponse").textContent = JSON.stringify(data, null, 2);
         });
 
-        // Add Todo (POST)
-        document.getElementById("addTodoForm").addEventListener("submit", async (e) => {
+        // 4️⃣ SIGNUP (POST)
+        document.getElementById("signupForm").addEventListener("submit", async (e) => {
             e.preventDefault();
-            const task = document.getElementById("todoTask").value;
-
-            const response = await fetch(`${baseUrl}/todos`, {
+            const username = document.getElementById("signupUsername").value;
+            const password = document.getElementById("signupPassword").value;
+            const response = await fetch(`${baseUrl}/signup`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ task })
+                body: JSON.stringify({ username, password })
             });
-
             const data = await response.json();
-            document.getElementById("addTodoResponse").textContent = JSON.stringify(data, null, 2);
+            document.getElementById("signupResponse").textContent = JSON.stringify(data, null, 2);
         });
+
+        // 5️⃣ LOGIN (POST)
+        document.getElementById("loginForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const username = document.getElementById("loginUsername").value;
+            const password = document.getElementById("loginPassword").value;
+            const response = await fetch(`${baseUrl}/login`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, password })
+            });
+            const data = await response.json();
+            document.getElementById("loginResponse").textContent = JSON.stringify(data, null, 2);
+        });
+
     </script>
 
 </body>
