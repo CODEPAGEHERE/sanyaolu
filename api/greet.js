@@ -4,6 +4,6 @@ export default function handler(req, res) {
   return res.status(200).json({
     success: true,
     message: `Hello, ${name}!`,
-    data: { greeting: `Hello, '${name}!'we hope you like the endpoint samples &#10084; Happycode.` },
+    data: { greeting: `Hello, ${name}! we hope you like the endpoint samples &#10084; Happycode.` },
   });
 }
