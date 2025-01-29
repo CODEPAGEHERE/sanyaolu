@@ -83,10 +83,6 @@ export default function handler(req, res) {
           <p class="description">Logs in a user. Send JSON body: <code>{ "username": "test", "password": "pass123" }</code></p>
         </div>
 
-        <div class="endpoint">
-          <span class="method GET">GET</span> <a href="/api/text?text=Hello&color=blue">/api/text</a>
-          <p class="description">Generates text with a color. Example: <code>/api/text?text=Hello&color=blue</code></p>
-        </div>
         
         <p style="text-align: center; margin-top: 20px; color: #777;">Developed by HappyCode 🚀</p>
       </div>
