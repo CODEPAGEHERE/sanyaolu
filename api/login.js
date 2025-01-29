@@ -1,5 +1,6 @@
-// In-memory storage for users (this should ideally be a database in production)
-let users = [];
+let users = [
+  { username: "testUser", password: "password123" } // Sample test user
+];
 
 export default function handler(req, res) {
   if (req.method === "POST") {
