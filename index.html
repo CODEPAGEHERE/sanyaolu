@@ -3,55 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banking App - Demo View</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://kit.fontawesome.com/yourkitcode.js" crossorigin="anonymous"></script>
+    <title>Banking App Interface</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    
+    <style>
+        body {
+            background-color: #f2f2f2; /* Light ash background */
+            font-family: Arial, sans-serif;
+        }
+        /* Header */
+        header {
+            background-color: #8B5E3B; /* Golden Brown */
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 18px;
+            position: relative;
+        }
+        .header-center {
+            display: flex;
+            align-items: center;
+        }
+        .notification-bell {
+            position: relative;
+            margin-left: 10px;
+        }
+        .notification-bell .badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #FFD700; /* Gold */
+            color: black;
+            font-size: 12px;
+            border-radius: 50%;
+            padding: 4px 7px;
+        }
+        /* Balance Section */
+        .carousel-inner {
+            display: flex;
+        }
+        .carousel-item {
+            flex: 1;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        .balance p {
+            font-size: 16px;
+            color: #555;
+        }
+        .balance h1 {
+            font-size: 30px;
+            font-weight: bold;
+            color: #8B5E3B;
+        }
+        .indicator {
+            margin-top: 10px;
+            color: #555;
+            font-size: 14px;
+        }
+        /* Carousel Dots */
+        .carousel-indicators {
+            bottom: -30px;
+        }
+        .carousel-indicators li {
+            background-color: #8B5E3B;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        /* Buttons */
+        .btn-custom {
+            background-color: #8B5E3B;
+            color: white;
+            width: 45%;
+            border-radius: 20px;
+            padding: 10px;
+            margin: 10px;
+        }
+        .btn-custom:hover {
+            background-color: #FFD700;
+            color: black;
+        }
+    </style>
 </head>
 <body>
 
     <!-- Header -->
     <header>
-        <i class="fa fa-bars"></i>
-        <span>Hello Oluwaseyi 
-            <i class="fa fa-bell">
-                <span class="notification-badge">3</span>
-            </i>
-        </span>
-        <i class="fa fa-user"></i>
+        <i class="bi bi-list"></i> <!-- Toggle Icon -->
+        <div class="header-center">
+            <span>Hello Oluwaseyi</span>
+            <div class="notification-bell">
+                <i class="bi bi-bell"></i>
+                <span class="badge">3</span>
+            </div>
+        </div>
+        <i class="bi bi-wifi"></i> <!-- WiFi Icon -->
     </header>
 
-    <!-- Balance Section with Slider -->
-    <div class="balance-slider">
-        <div class="balance-track">
-            <div class="balance-card active">
-                <p class="active-indicator">Savings Account <span class="dot"></span></p>
-                <h1>₦250,000</h1>
-                <button class="btn">Account Balance</button>
-                <button class="btn secondary">History</button>
+    <!-- Balance Section with Carousel -->
+    <div id="balanceCarousel" class="carousel slide mt-4 container" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#balanceCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#balanceCarousel" data-slide-to="1"></li>
+            <li data-target="#balanceCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="balance">
+                    <p>Savings Account (Active)</p>
+                    <h1>₦250,000</h1>
+                    <p class="indicator">Available Balance</p>
+                    <button class="btn btn-custom">Account Balance</button>
+                    <button class="btn btn-custom">History</button>
+                </div>
             </div>
-            <div class="balance-card">
-                <p>Savings Balance</p>
-                <h1>₦120,000</h1>
-                <button class="btn">Account Balance</button>
-                <button class="btn secondary">History</button>
+            <div class="carousel-item">
+                <div class="balance">
+                    <p>Current Account</p>
+                    <h1>₦150,000</h1>
+                    <p class="indicator">Available Balance</p>
+                    <button class="btn btn-custom">Account Balance</button>
+                    <button class="btn btn-custom">History</button>
+                </div>
             </div>
-            <div class="balance-card">
-                <p>Loan Balance</p>
-                <h1>₦50,000</h1>
-                <button class="btn">Account Balance</button>
-                <button class="btn secondary">History</button>
+            <div class="carousel-item">
+                <div class="balance">
+                    <p>Business Account</p>
+                    <h1>₦500,000</h1>
+                    <p class="indicator">Available Balance</p>
+                    <button class="btn btn-custom">Account Balance</button>
+                    <button class="btn btn-custom">History</button>
+                </div>
             </div>
         </div>
     </div>
-
-    <!-- Pagination Dots -->
-    <div class="pagination-dots">
-        <span class="dot active-dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-    </div>
-
-    <script src="script.js"></script>
 
 </body>
 </html>
