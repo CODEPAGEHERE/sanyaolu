@@ -3,94 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banking App Interface</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Banking App</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+
     <style>
         body {
-            background-color: #f2f2f2; /* Light ash background */
+            background-color: #f2f2f2;
             font-family: Arial, sans-serif;
+            margin: 0;
         }
+
         /* Header */
         header {
-            background-color: #8B5E3B; /* Golden Brown */
-            color: white;
-            padding: 15px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            background-color: #8B6508;
+            padding: 15px;
+            color: white;
             font-size: 18px;
-            position: relative;
         }
+
         .header-center {
             display: flex;
             align-items: center;
         }
-        .notification-bell {
+
+        .notification {
             position: relative;
             margin-left: 10px;
         }
-        .notification-bell .badge {
+
+        .notification .badge {
             position: absolute;
             top: -5px;
             right: -5px;
-            background-color: #FFD700; /* Gold */
-            color: black;
+            background: red;
+            color: white;
             font-size: 12px;
             border-radius: 50%;
-            padding: 4px 7px;
+            padding: 4px 6px;
         }
-        /* Balance Section */
+
+        /* Card Section */
         .carousel-inner {
-            display: flex;
+            width: 100%;
         }
+
         .carousel-item {
-            flex: 1;
-            text-align: center;
-            padding: 20px;
-            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+
+        .card {
+            width: 90%; /* Proper width for banking app */
             background-color: white;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 30px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
         }
-        .balance p {
-            font-size: 16px;
-            color: #555;
+
+        .account-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
-        .balance h1 {
-            font-size: 30px;
+
+        .account-type {
+            font-size: 22px;
             font-weight: bold;
-            color: #8B5E3B;
+            color: #444;
         }
-        .indicator {
+
+        .active-status {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            color: green;
+        }
+
+        .active-status span {
+            width: 12px;
+            height: 12px;
+            background-color: green;
+            border-radius: 50%;
+            margin-left: 5px;
+        }
+
+        .account-number {
+            font-size: 20px;
+            font-weight: bold;
+            color: #666;
             margin-top: 10px;
-            color: #555;
-            font-size: 14px;
         }
-        /* Carousel Dots */
+
+        hr {
+            border: none;
+            height: 2px;
+            background-color: #ddd;
+            margin: 15px 0;
+        }
+
+        .account-balance {
+            font-size: 28px;
+            font-weight: bold;
+            color: #000;
+        }
+
+        /* Dots Navigation */
         .carousel-indicators {
             bottom: -30px;
         }
+
         .carousel-indicators li {
-            background-color: #8B5E3B;
+            background-color: #bbb;
             width: 10px;
             height: 10px;
             border-radius: 50%;
         }
-        /* Buttons */
-        .btn-custom {
-            background-color: #8B5E3B;
-            color: white;
-            width: 45%;
-            border-radius: 20px;
-            padding: 10px;
-            margin: 10px;
-        }
-        .btn-custom:hover {
-            background-color: #FFD700;
-            color: black;
+
+        .carousel-indicators .active {
+            background-color: #8B6508;
         }
     </style>
 </head>
@@ -98,50 +139,46 @@
 
     <!-- Header -->
     <header>
-        <i class="bi bi-list"></i> <!-- Toggle Icon -->
+        <i class="bi bi-list"></i>
         <div class="header-center">
             <span>Hello Oluwaseyi</span>
-            <div class="notification-bell">
+            <div class="notification">
                 <i class="bi bi-bell"></i>
                 <span class="badge">3</span>
             </div>
         </div>
-        <i class="bi bi-wifi"></i> <!-- WiFi Icon -->
+        <i class="bi bi-wifi"></i>
     </header>
 
-    <!-- Balance Section with Carousel -->
-    <div id="balanceCarousel" class="carousel slide mt-4 container" data-ride="carousel">
+    <!-- Bootstrap Carousel -->
+    <div id="accountCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-            <li data-target="#balanceCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#balanceCarousel" data-slide-to="1"></li>
-            <li data-target="#balanceCarousel" data-slide-to="2"></li>
+            <li data-target="#accountCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#accountCarousel" data-slide-to="1"></li>
         </ol>
         <div class="carousel-inner">
+            <!-- Savings Account -->
             <div class="carousel-item active">
-                <div class="balance">
-                    <p>Savings Account (Active)</p>
-                    <h1>₦250,000</h1>
-                    <p class="indicator">Available Balance</p>
-                    <button class="btn btn-custom">Account Balance</button>
-                    <button class="btn btn-custom">History</button>
+                <div class="card">
+                    <div class="account-header">
+                        <div class="account-type">Savings Account</div>
+                        <div class="active-status">Active <span></span></div>
+                    </div>
+                    <div class="account-number">8170794157</div>
+                    <hr>
+                    <div class="account-balance">₦250,000</div>
                 </div>
             </div>
+
+            <!-- Current Account -->
             <div class="carousel-item">
-                <div class="balance">
-                    <p>Current Account</p>
-                    <h1>₦150,000</h1>
-                    <p class="indicator">Available Balance</p>
-                    <button class="btn btn-custom">Account Balance</button>
-                    <button class="btn btn-custom">History</button>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="balance">
-                    <p>Business Account</p>
-                    <h1>₦500,000</h1>
-                    <p class="indicator">Available Balance</p>
-                    <button class="btn btn-custom">Account Balance</button>
-                    <button class="btn btn-custom">History</button>
+                <div class="card">
+                    <div class="account-header">
+                        <div class="account-type">Current Account</div>
+                    </div>
+                    <div class="account-number">8170794157</div>
+                    <hr>
+                    <div class="account-balance">₦250,000</div>
                 </div>
             </div>
         </div>
