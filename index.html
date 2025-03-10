@@ -1,426 +1,57 @@
-x<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-    <title>Banking App</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        /* Full Page Layout */
-        body {
-            background: #EAEAEA; /* Light Ash Background */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        /* Banking App Container */
-        .banking-app {
-            width: 100%;
-            max-width: 400px;
-            height: 100vh;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-
-        /* Header */
-			   header {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			padding: 15px;
-			background: #f5f5f5;
-			color: #333;
-			font-size: 18px;
-		}
-
-		.notification {
-			position: relative;
-		}
-
-		.notification-count {
-			position: absolute;
-			top: -5px;
-			right: -5px;
-			background: red;
-			color: white;
-			font-size: 12px;
-			font-weight: bold;
-			padding: 2px 6px;
-			border-radius: 50%;
-		}
-
-
-        header i {
-            font-size: 24px;
-            cursor: pointer;
-        }
-
-       /* Balance Slider */
-.balance-slider {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    margin: 20px 0;
-}
-
-/* Track for sliding */
-.balance-track {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-
-/* Balance Cards */
-.balance-card {
-    min-width: 100%;
-    background: white;
-    color: #333;
-    text-align: center;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* Active Indicator */
-.active-indicator {
-    color: #daa520;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-}
-
-/* Active Dot for Indicator */
-.active-indicator .dot {
-    width: 8px;
-    height: 8px;
-    background: #daa520;
-    border-radius: 50%;
-}
-
-/* Buttons */
-.btn {
-    display: block;
-    width: 80%;
-    margin: 10px auto;
-    padding: 10px;
-    background: #daa520;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.btn.secondary {
-    background: #555;
-}
-
-/* Pagination Dots */
-.pagination-dots {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-    gap: 5px;
-}
-
-.dot {
-    width: 10px;
-    height: 10px;
-    background: #ccc;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.active-dot {
-    background: #daa520;
-}
-
-
-        .balance {
-            background: #8B5E3C;  /* Darker Gold Brown */
-            color: white;
-            text-align: center;
-            padding: 30px 20px;
-        }
-
-        .balance h1 {
-            font-size: 28px;
-            margin-top: 10px;
-        }
-
-        /* Quick Actions */
-        .quick-actions {
-            display: flex;
-            justify-content: space-around;
-            padding: 20px;
-        }
-
-        .action-btn {
-            background: #FFD700;  /* Gold */
-            color: black;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: 0.3s;
-            width: 30%;
-            text-align: center;
-        }
-
-        .action-btn:hover {
-            background: #D4AF37;  /* Darker Gold */
-        }
-
-        /* Transactions */
-        .transactions {
-            padding: 20px;
-            overflow-y: auto;
-            max-height: 50vh;
-        }
-
-        .transaction {
-            display: flex;
-            justify-content: space-between;
-            padding: 15px 0;
-            border-bottom: 1px solid #ddd;
-            align-items: center;
-        }
-
-        .amount {
-            font-weight: bold;
-        }
-
-        .debit {
-            color: red;
-        }
-
-        .credit {
-            color: green;
-        }
-=======
-    <title>API EndPoint Demo</title>
-    <style>
-        body { font-family: Arial, sans-serif; padding: 20px; }
-        form { margin-bottom: 20px; }
-        label { display: block; margin-top: 10px; }
-        input, button { margin-top: 5px; padding: 8px; }
-        pre { background: #f4f4f4; padding: 10px; border: 1px solid #ddd; overflow-x:auto; }
->>>>>>> 88839df9798585572a13dccbdd75494af637a9f7
-    </style>
+    <title>Banking App - Demo View</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/yourkitcode.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-<<<<<<< HEAD
-    <div class="banking-app">
-				<!-- Header -->
-		<header>
-			<i class="fa fa-bars"></i>
-			<span>Hi seyi</span>
-			<div class="notification">
-				<i class="fa fa-bell"></i>
-				<span class="notification-count">3</span>
-			</div>
-			<i class="fa fa-user"></i>
-		</header>
-=======
-    <h1>API Endpoints</h1>
+    <!-- Header -->
+    <header>
+        <i class="fa fa-bars"></i>
+        <span>Hello Oluwaseyi 
+            <i class="fa fa-bell">
+                <span class="notification-badge">3</span>
+            </i>
+        </span>
+        <i class="fa fa-user"></i>
+    </header>
 
-    <!-- 1️⃣ GREETING Endpoint -->
-    <h2>Greets User</h2>
-    <form id="greetForm">
-        <label for="greetName">Enter Name:</label>
-        <input type="text" id="greetName" placeholder="Enter your name" required>
-        <button type="submit">Greet</button>
-    </form>
-    <pre id="greetResponse"></pre>
-
-    <!-- 2️⃣ ADD TODO LIST -->
-    <h2>Add a Todo</h2>
-    <form id="addTodoForm">
-        <label for="todoTask">Task:</label>
-        <input type="text" id="todoTask" placeholder="Enter a task" required>
-        <button type="submit">Add Todo</button>
-    </form>
-    <pre id="addTodoResponse"></pre>
-
-    <!-- 3️⃣ GET TODO LIST -->
-    <h2>Fetch Todolist </h2>
-    <button id="fetchTodos">List</button>
-    <pre id="todosResponse"></pre>
-
-    <!-- 4️⃣ SIGNUP -->
-    <h2>Signup</h2>
-    <form id="signupForm">
-        <label for="signupUsername">Username:</label>
-        <input type="text" id="signupUsername" required>
-        <label for="signupPassword">Password:</label>
-        <input type="password" id="signupPassword" required>
-        <button type="submit">Signup</button>
-    </form>
-    <pre id="signupResponse"></pre>
-
-    <!-- 5️⃣ LOGIN -->
-    <h2>Login</h2>
-    <form id="loginForm">
-        <label for="loginUsername">Username:</label>
-        <input type="text" id="loginUsername" required>
-        <label for="loginPassword">Password:</label>
-        <input type="password" id="loginPassword" required>
-        <button type="submit">Login</button>
-    </form>
-    <pre id="loginResponse"></pre>
-
-    <script>
-        const baseUrl = "/api"; // Change if hosted on another domain
->>>>>>> 88839df9798585572a13dccbdd75494af637a9f7
-
-        // 1️⃣ GREET (GET)
-        document.getElementById("greetForm").addEventListener("submit", async (e) => {
-            e.preventDefault();
-            const name = document.getElementById("greetName").value;
-            const response = await fetch(`${baseUrl}/greet?name=${name}`);
-            const data = await response.json();
-            document.getElementById("greetResponse").textContent = JSON.stringify(data, null, 2);
-        });
-
-<<<<<<< HEAD
-				<<!-- Balance Section with Slider -->
-			<div class="balance-slider">
-				<div class="balance-track">
-					<div class="balance-card active">
-						<p class="active-indicator">Savings Account <span class="dot"></span></p>
-						<h1>₦250,000</h1>
-						<button class="btn">Account Balance</button>
-						<button class="btn secondary">History</button>
-					</div>
-					<div class="balance-card">
-						<p>Savings Balance</p>
-						<h1>₦120,000</h1>
-						<button class="btn">Account Balance</button>
-						<button class="btn secondary">History</button>
-					</div>
-					<div class="balance-card">
-						<p>Loan Balance</p>
-						<h1>₦50,000</h1>
-						<button class="btn">Account Balance</button>
-						<button class="btn secondary">History</button>
-					</div>
-				</div>
-			</div>
-
-<!-- Pagination Dots -->
-<div class="pagination-dots">
-    <span class="dot active-dot"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-</div>
-
-
-<!-- Slider Controls -->
-<div class="slider-controls">
-    <button id="prev"><i class="fa fa-chevron-left"></i></button>
-    <button id="next"><i class="fa fa-chevron-right"></i></button>
-</div>
-
-
-        <!-- Quick Actions -->
-        <div class="quick-actions">
-            <button class="action-btn"><i class="fa fa-send"></i> Send</button>
-            <button class="action-btn"><i class="fa fa-plus"></i> Deposit</button>
-            <button class="action-btn"><i class="fa fa-money-bill-wave"></i> Withdraw</button>
-        </div>
-
-        <!-- Transactions -->
-        <div class="transactions">
-            <div class="transaction">
-                <span>Electricity Bill</span>
-                <span class="amount debit">-₦15,000</span>
+    <!-- Balance Section with Slider -->
+    <div class="balance-slider">
+        <div class="balance-track">
+            <div class="balance-card active">
+                <p class="active-indicator">Savings Account <span class="dot"></span></p>
+                <h1>₦250,000</h1>
+                <button class="btn">Account Balance</button>
+                <button class="btn secondary">History</button>
             </div>
-            <div class="transaction">
-                <span>Salary Credit</span>
-                <span class="amount credit">+₦200,000</span>
+            <div class="balance-card">
+                <p>Savings Balance</p>
+                <h1>₦120,000</h1>
+                <button class="btn">Account Balance</button>
+                <button class="btn secondary">History</button>
             </div>
-            <div class="transaction">
-                <span>Supermarket</span>
-                <span class="amount debit">-₦5,000</span>
-            </div>
-            <div class="transaction">
-                <span>Transfer from John</span>
-                <span class="amount credit">+₦50,000</span>
-            </div>
-            <div class="transaction">
-                <span>Internet Subscription</span>
-                <span class="amount debit">-₦7,500</span>
+            <div class="balance-card">
+                <p>Loan Balance</p>
+                <h1>₦50,000</h1>
+                <button class="btn">Account Balance</button>
+                <button class="btn secondary">History</button>
             </div>
         </div>
     </div>
 
-=======
-        // 2️⃣ ADD TODO (POST)
-        document.getElementById("addTodoForm").addEventListener("submit", async (e) => {
-            e.preventDefault();
-            const task = document.getElementById("todoTask").value;
-            const response = await fetch(`${baseUrl}/todos`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ task })
-            });
-            const data = await response.json();
-            document.getElementById("addTodoResponse").textContent = JSON.stringify(data, null, 2);
-        });
+    <!-- Pagination Dots -->
+    <div class="pagination-dots">
+        <span class="dot active-dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
 
-        // 3️⃣ GET TODOS (GET)
-        document.getElementById("fetchTodos").addEventListener("click", async () => {
-            const response = await fetch(`${baseUrl}/todos`);
-            const data = await response.json();
-            document.getElementById("todosResponse").textContent = JSON.stringify(data, null, 2);
-        });
+    <script src="script.js"></script>
 
-        // 4️⃣ SIGNUP (POST)
-        document.getElementById("signupForm").addEventListener("submit", async (e) => {
-            e.preventDefault();
-            const username = document.getElementById("signupUsername").value;
-            const password = document.getElementById("signupPassword").value;
-            const response = await fetch(`${baseUrl}/signup`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ username, password })
-            });
-            const data = await response.json();
-            document.getElementById("signupResponse").textContent = JSON.stringify(data, null, 2);
-        });
-
-        // 5️⃣ LOGIN (POST)
-        document.getElementById("loginForm").addEventListener("submit", async (e) => {
-            e.preventDefault();
-            const username = document.getElementById("loginUsername").value;
-            const password = document.getElementById("loginPassword").value;
-            const response = await fetch(`${baseUrl}/login`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ username, password })
-            });
-            const data = await response.json();
-            document.getElementById("loginResponse").textContent = JSON.stringify(data, null, 2);
-        });
-
-    </script>
-                     <p style="text-align: center; margin-top: 20px; color: #777;">Developed by HappyCode 🚀</p>
->>>>>>> 88839df9798585572a13dccbdd75494af637a9f7
 </body>
 </html>
