@@ -7,6 +7,9 @@ const port = process.env.PORT || 3001;
 // Middleware for parsing JSON requests
 app.use(express.json());
 
+// Serve the static index.html file
+app.use(express.static(path.join(__dirname)));
+
 // In-memory storage for todos and users
 let todos = [];
 let users = [];
@@ -62,7 +65,15 @@ app.get("/api/text", (req, res) => {
   });
 });
 
-// Serve the static index.html file
+// Handle CORS headers
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  next();
+});
+
+// Serve the main HTML file
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });

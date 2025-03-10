@@ -1,0 +1,99 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Banking App Container */
+.banking-app {
+    width: 350px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Header */
+header {
+    background: #034d1a;
+    color: gold;
+    padding: 20px;
+    text-align: center;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header i {
+    font-size: 24px;
+}
+
+/* Balance Section */
+.balance {
+    background: #008037;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.balance h1 {
+    font-size: 28px;
+    margin-top: 10px;
+}
+
+/* Quick Actions */
+.quick-actions {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.action-btn {
+    background: gold;
+    color: black;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.action-btn:hover {
+    background: darkgoldenrod;
+}
+
+/* Transactions */
+.transactions {
+    padding: 20px;
+}
+
+.transaction {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.amount {
+    font-weight: bold;
+}
+
+.debit {
+    color: red;
+}
+
+.credit {
+    color: green;
+}
