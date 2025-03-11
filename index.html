@@ -49,57 +49,91 @@
             padding: 4px 6px;
         }
 
-        /* Scrollable Card Container */
-        .scroll-container {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            gap: 15px;
-            padding: 20px;
+        /* Carousel & Card Styling */
+        .carousel {
+            margin-top: 30px;
         }
 
-        .scroll-container::-webkit-scrollbar {
-            display: none; /* Hide scrollbar */
+        .carousel-inner {
+            width: 100%;
+        }
+
+        .carousel-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
         }
 
         .card {
-            flex: 0 0 48%; /* Two cards fit within 100% width */
-            scroll-snap-align: center;
+            width: 95%; /* Covers 95% of the screen width */
             background-color: white;
-            padding: 25px;
-            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
             border-radius: 15px;
         }
 
         .account-header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
         }
 
         .account-type {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: bold;
             color: #444;
         }
 
         .active-status {
-            font-size: 14px;
+            display: flex;
+            align-items: center;
+            font-size: 16px;
             color: green;
         }
 
+        .active-status span {
+            width: 12px;
+            height: 12px;
+            background-color: green;
+            border-radius: 50%;
+            margin-left: 5px;
+        }
+
         .account-number {
-            font-size: 18px;
+            font-size: 20px;
+            font-weight: bold;
             color: #666;
-            margin-top: 5px;
+            margin-top: 10px;
+        }
+
+        hr {
+            border: none;
+            height: 2px;
+            background-color: #ddd;
+            margin: 15px 0;
         }
 
         .account-balance {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
             color: #000;
-            margin-top: 10px;
+        }
+
+        /* Dots Navigation */
+        .carousel-indicators {
+            bottom: -30px;
+        }
+
+        .carousel-indicators li {
+            background-color: #bbb;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .carousel-indicators .active {
+            background-color: #8B6508;
         }
     </style>
 </head>
@@ -118,23 +152,37 @@
         <i class="bi bi-wifi"></i>
     </header>
 
-    <!-- Scrollable Cards -->
-    <div class="scroll-container">
-        <div class="card">
-            <div class="account-header">
-                <div class="account-type">Savings Account</div>
-                <div class="active-status">Active</div>
+    <!-- Bootstrap Carousel -->
+    <div id="accountCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#accountCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#accountCarousel" data-slide-to="1"></li>
+        </ol>
+        <div class="carousel-inner">
+            <!-- Savings Account -->
+            <div class="carousel-item active">
+                <div class="card">
+                    <div class="account-header">
+                        <div class="account-type">Savings Account</div>
+                        <div class="active-status">Active <span></span></div>
+                    </div>
+                    <div class="account-number">8170794157</div>
+                    <hr>
+                    <div class="account-balance">₦250,000</div>
+                </div>
             </div>
-            <div class="account-number">8170794157</div>
-            <div class="account-balance">₦250,000</div>
-        </div>
 
-        <div class="card">
-            <div class="account-header">
-                <div class="account-type">Current Account</div>
+            <!-- Current Account -->
+            <div class="carousel-item">
+                <div class="card">
+                    <div class="account-header">
+                        <div class="account-type">Current Account</div>
+                    </div>
+                    <div class="account-number">8170794157</div>
+                    <hr>
+                    <div class="account-balance">₦250,000</div>
+                </div>
             </div>
-            <div class="account-number">8170794158</div>
-            <div class="account-balance">₦500,000</div>
         </div>
     </div>
 
