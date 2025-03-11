@@ -11,7 +11,7 @@
 
     <style>
         body {
-            background-color: #E6F2E6; /* Light greenish background */
+            background-color: #E6F5E6;
             font-family: Arial, sans-serif;
             margin: 0;
             overflow-x: hidden;
@@ -22,7 +22,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background-color: #2E7D32; /* Green */
+            background-color: #2E7D32;
             padding: 15px;
             color: white;
             font-size: 18px;
@@ -49,10 +49,9 @@
             padding: 4px 6px;
         }
 
-        /* Account Cards (Carousel) */
-        .carousel-container {
+        /* Account Cards */
+        .carousel {
             margin-top: 20px;
-            padding: 10px;
         }
 
         .carousel-inner {
@@ -65,83 +64,123 @@
         }
 
         .account-card {
-            width: 95%;
+            width: 90%;
             margin: auto;
             background-color: white;
             padding: 20px;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            text-align: left;
         }
 
         .account-type {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
             color: #444;
         }
 
         .account-number {
-            font-size: 16px;
+            font-size: 14px;
             color: #666;
             margin-top: 5px;
         }
 
         .account-balance {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: bold;
             color: #2E7D32;
-            margin-top: 15px;
+            margin-top: 10px;
         }
 
-        /* Dots Indicator */
-        .carousel-indicators {
-            bottom: -15px;
+        .history-btn {
+            background-color: #FFD700;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 14px;
+            font-weight: bold;
+            color: black;
+            border: none;
+            margin-top: 10px;
         }
 
-        .carousel-indicators li {
-            background-color: #2E7D32;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
+        /* Quick Actions */
+        .quick-actions {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-around;
         }
 
-        /* Transaction Shortcuts */
-        .shortcuts {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin: 20px 10px;
-        }
-
-        .shortcut-card {
+        .action-card {
+            width: 45%;
             background-color: #2E7D32;
             color: white;
             padding: 15px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            position: relative;
         }
 
-        .shortcut-card i {
+        .action-card.yellow {
+            background-color: #CBA600;
+        }
+
+        .action-card i {
+            position: absolute;
+            right: 10px;
             font-size: 20px;
         }
 
         /* Recent Transactions */
-        .recent-transactions {
+        .transactions {
+            margin-top: 20px;
             background: white;
             padding: 15px;
-            margin: 20px 10px;
-            border-radius: 8px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            width: 90%;
+            margin: auto;
+        }
+
+        .transactions-title {
+            font-weight: bold;
+            font-size: 16px;
         }
 
         .transaction-item {
             display: flex;
-            justify-content: space-between;
+            align-items: center;
             padding: 10px 0;
             border-bottom: 1px solid #ddd;
         }
+
+        .transaction-icon {
+            width: 35px;
+            height: 35px;
+            background-color: #2E7D32;
+            color: white;
+            text-align: center;
+            line-height: 35px;
+            font-size: 16px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .transaction-text {
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* Dots */
+        .carousel-indicators {
+            position: relative;
+            margin-top: 10px;
+        }
+
+        .carousel-indicators li {
+            background-color: #2E7D32;
+        }
+
     </style>
 </head>
 <body>
@@ -150,7 +189,7 @@
     <header>
         <i class="bi bi-list"></i>
         <div class="header-center">
-            <span>Hello Oluwaseyi</span>
+            <span>Hi, Oluwaseyi</span>
             <div class="notification">
                 <i class="bi bi-bell"></i>
                 <span class="badge">3</span>
@@ -159,64 +198,63 @@
         <i class="bi bi-wifi"></i>
     </header>
 
-    <!-- Account Cards Carousel -->
-    <div class="carousel-container">
-        <div id="accountCarousel" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="account-card">
-                        <div class="account-type">Savings Account</div>
-                        <div class="account-number">0923787689</div>
-                        <div class="account-balance">₦107,000</div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="account-card">
-                        <div class="account-type">Current Account</div>
-                        <div class="account-number">8170794158</div>
-                        <div class="account-balance">₦500,000</div>
-                    </div>
+    <!-- Account Cards (Carousel) -->
+    <div id="accountCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#accountCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#accountCarousel" data-slide-to="1"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="account-card">
+                    <div class="account-type">Savings Account</div>
+                    <div class="account-number">0923787689</div>
+                    <div class="account-balance">₦107,000</div>
+                    <button class="history-btn">HISTORY</button>
                 </div>
             </div>
-            <!-- Dots Indicator -->
-            <ol class="carousel-indicators">
-                <li data-target="#accountCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#accountCarousel" data-slide-to="1"></li>
-            </ol>
+            <div class="carousel-item">
+                <div class="account-card">
+                    <div class="account-type">Current Account</div>
+                    <div class="account-number">8170794158</div>
+                    <div class="account-balance">₦500,000</div>
+                    <button class="history-btn">HISTORY</button>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Transaction Shortcuts -->
-    <div class="shortcuts">
-        <div class="shortcut-card">
-            <div>
-                <div class="font-weight-bold">Buy Airtime</div>
-                <small>Airtel, Glo, 9mobile, MTN</small>
-            </div>
-            <i class="bi bi-arrow-right-circle"></i>
+    <!-- Quick Actions -->
+    <div class="quick-actions">
+        <div class="action-card">
+            Buy Airtime
+            <br>
+            <small>Airtel, Glo, 9mobile, MTN</small>
+            <i class="bi bi-chevron-right"></i>
         </div>
-        <div class="shortcut-card">
-            <div>
-                <div class="font-weight-bold">Fund Transfer</div>
-                <small>Send money to friends</small>
-            </div>
-            <i class="bi bi-arrow-right-circle"></i>
+        <div class="action-card">
+            Fund Transfer
+            <br>
+            <small>Send money to friends, families, etc.</small>
+            <i class="bi bi-chevron-right"></i>
         </div>
-        <div class="shortcut-card" style="background-color: #D4A017;">
-            <div>
-                <div class="font-weight-bold">Mobile Data</div>
-                <small>Buy data for networks</small>
-            </div>
-            <i class="bi bi-arrow-right-circle"></i>
+    </div>
+
+    <div class="quick-actions">
+        <div class="action-card yellow">
+            Mobile Data
+            <br>
+            <small>Buy data for networks anytime</small>
+            <i class="bi bi-chevron-right"></i>
         </div>
     </div>
 
     <!-- Recent Transactions -->
-    <div class="recent-transactions">
-        <div class="font-weight-bold mb-2">Recent Transactions</div>
+    <div class="transactions">
+        <div class="transactions-title">Recent Transactions</div>
         <div class="transaction-item">
-            <span>Airtime for Ojo Timilehin</span>
-            <span>₦500</span>
+            <div class="transaction-icon">CR</div>
+            <div class="transaction-text">Airtime for Ojo Timilehin</div>
         </div>
     </div>
 
