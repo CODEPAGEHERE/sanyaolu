@@ -3,28 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banking App UI</title>
+    <title>Banking App</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+
     <style>
         body {
-            background-color: #f0f7f4;
+            background-color: #E6F2E6; /* Light greenish background */
             font-family: Arial, sans-serif;
+            margin: 0;
+            overflow-x: hidden;
         }
-        .header {
-            background-color: #166b2f;
-            color: white;
-            padding: 15px;
+
+        /* Header */
+        header {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            background-color: #2E7D32; /* Green */
+            padding: 15px;
+            color: white;
             font-size: 18px;
         }
+
+        .header-center {
+            display: flex;
+            align-items: center;
+        }
+
         .notification {
             position: relative;
+            margin-left: 10px;
         }
+
         .notification .badge {
             position: absolute;
             top: -5px;
@@ -33,123 +46,179 @@
             color: white;
             font-size: 12px;
             border-radius: 50%;
-            padding: 3px 7px;
+            padding: 4px 6px;
         }
-        .carousel {
-            margin-top: 10px;
+
+        /* Account Cards (Carousel) */
+        .carousel-container {
+            margin-top: 20px;
+            padding: 10px;
         }
+
+        .carousel-inner {
+            display: flex;
+        }
+
         .carousel-item {
+            flex: 0 0 100%;
             text-align: center;
         }
+
         .account-card {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
-            max-width: 90%;
+            width: 95%;
             margin: auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
         }
+
         .account-type {
-            font-size: 16px;
-            color: #666;
-        }
-        .account-number {
             font-size: 18px;
             font-weight: bold;
-            margin: 5px 0;
+            color: #444;
         }
-        .account-status {
-            font-size: 14px;
-            color: green;
-            font-weight: bold;
+
+        .account-number {
+            font-size: 16px;
+            color: #666;
+            margin-top: 5px;
         }
-        .balance {
+
+        .account-balance {
             font-size: 24px;
             font-weight: bold;
-            margin: 10px 0;
-            color: #166b2f;
+            color: #2E7D32;
+            margin-top: 15px;
         }
-        .history-btn {
-            background: #f8c144;
-            border: none;
-            padding: 5px 15px;
-            font-size: 14px;
-            font-weight: bold;
-            border-radius: 15px;
-            color: black;
+
+        /* Dots Indicator */
+        .carousel-indicators {
+            bottom: -15px;
         }
-        .dots {
-            text-align: center;
-            margin-top: 10px;
-        }
-        .dot {
-            height: 10px;
-            width: 10px;
-            background-color: #bbb;
+
+        .carousel-indicators li {
+            background-color: #2E7D32;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
-            display: inline-block;
-            margin: 5px;
         }
-        .active-dot {
-            background-color: #166b2f;
+
+        /* Transaction Shortcuts */
+        .shortcuts {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 20px 10px;
+        }
+
+        .shortcut-card {
+            background-color: #2E7D32;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .shortcut-card i {
+            font-size: 20px;
+        }
+
+        /* Recent Transactions */
+        .recent-transactions {
+            background: white;
+            padding: 15px;
+            margin: 20px 10px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .transaction-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
         }
     </style>
 </head>
 <body>
 
     <!-- Header -->
-    <div class="header">
-        <span>Hi, Aisha</span>
-        <div class="notification">
-            <i class="bi bi-bell"></i>
-            <span class="badge">12</span>
+    <header>
+        <i class="bi bi-list"></i>
+        <div class="header-center">
+            <span>Hello Oluwaseyi</span>
+            <div class="notification">
+                <i class="bi bi-bell"></i>
+                <span class="badge">3</span>
+            </div>
+        </div>
+        <i class="bi bi-wifi"></i>
+    </header>
+
+    <!-- Account Cards Carousel -->
+    <div class="carousel-container">
+        <div id="accountCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="account-card">
+                        <div class="account-type">Savings Account</div>
+                        <div class="account-number">0923787689</div>
+                        <div class="account-balance">₦107,000</div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="account-card">
+                        <div class="account-type">Current Account</div>
+                        <div class="account-number">8170794158</div>
+                        <div class="account-balance">₦500,000</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Dots Indicator -->
+            <ol class="carousel-indicators">
+                <li data-target="#accountCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#accountCarousel" data-slide-to="1"></li>
+            </ol>
         </div>
     </div>
 
-    <!-- Account Carousel -->
-    <div id="accountCarousel" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="account-card">
-                    <p class="account-type">Savings Account</p>
-                    <p class="account-number">0923787689</p>
-                    <p class="account-status">● Active</p>
-                    <p class="balance">N107,000</p>
-                    <button class="history-btn">HISTORY <i class="bi bi-arrow-right"></i></button>
-                </div>
+    <!-- Transaction Shortcuts -->
+    <div class="shortcuts">
+        <div class="shortcut-card">
+            <div>
+                <div class="font-weight-bold">Buy Airtime</div>
+                <small>Airtel, Glo, 9mobile, MTN</small>
             </div>
-            <div class="carousel-item">
-                <div class="account-card">
-                    <p class="account-type">Current Account</p>
-                    <p class="account-number">8170785601</p>
-                    <p class="account-status">● Active</p>
-                    <p class="balance">N500,000</p>
-                    <button class="history-btn">HISTORY <i class="bi bi-arrow-right"></i></button>
-                </div>
+            <i class="bi bi-arrow-right-circle"></i>
+        </div>
+        <div class="shortcut-card">
+            <div>
+                <div class="font-weight-bold">Fund Transfer</div>
+                <small>Send money to friends</small>
             </div>
+            <i class="bi bi-arrow-right-circle"></i>
+        </div>
+        <div class="shortcut-card" style="background-color: #D4A017;">
+            <div>
+                <div class="font-weight-bold">Mobile Data</div>
+                <small>Buy data for networks</small>
+            </div>
+            <i class="bi bi-arrow-right-circle"></i>
         </div>
     </div>
 
-    <!-- Dots for Carousel -->
-    <div class="dots">
-        <span class="dot active-dot" data-target="#accountCarousel" data-slide-to="0"></span>
-        <span class="dot" data-target="#accountCarousel" data-slide-to="1"></span>
+    <!-- Recent Transactions -->
+    <div class="recent-transactions">
+        <div class="font-weight-bold mb-2">Recent Transactions</div>
+        <div class="transaction-item">
+            <span>Airtime for Ojo Timilehin</span>
+            <span>₦500</span>
+        </div>
     </div>
-
-    <script>
-        $(document).ready(function () {
-            $('.dot').click(function () {
-                $('.dot').removeClass('active-dot');
-                $(this).addClass('active-dot');
-            });
-
-            $('#accountCarousel').on('slid.bs.carousel', function () {
-                let activeIndex = $('.carousel-item.active').index();
-                $('.dot').removeClass('active-dot');
-                $('.dot').eq(activeIndex).addClass('active-dot');
-            });
-        });
-    </script>
 
 </body>
 </html>
