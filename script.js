@@ -15,19 +15,7 @@ $(document).ready(function() {
 
 
 $(document).ready(function () {
-    // Toggle notification dropdown on click
-    $(".notification").click(function (event) {
-        event.stopPropagation(); // Prevent click from closing immediately
-        $(".notification-dropdown").toggle();
-    });
-
-    // Hide dropdown when clicking outside
-    $(document).click(function () {
-        $(".notification-dropdown").hide();
-    });
-
-    // Prevent dropdown from closing when clicking inside it
-    $(".notification-dropdown").click(function (event) {
-        event.stopPropagation();
+    $(".notification").click(function () {
+        window.location.href = "notifications.html"; // Redirect to the notifications page
     });
 });
