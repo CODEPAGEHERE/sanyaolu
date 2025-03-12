@@ -64,3 +64,134 @@ body {
     transform: scale(1.05);
     transition: 0.3s;
 }
+  body {
+            background-color: #E6F2E6; 
+            font-family: Arial, sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #2E7D32;
+            padding: 15px;
+            color: white;
+            font-size: 18px;
+        }
+
+        .header-center {
+            display: flex;
+            align-items: center;
+        }
+
+        .notification {
+            position: relative;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .notification .badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: red;
+            color: white;
+            font-size: 12px;
+            border-radius: 50%;
+            padding: 4px 6px;
+        }
+
+        /* Notification Dropdown */
+        .notification-dropdown {
+            display: none;
+            position: absolute;
+            right: 10px;
+            background: white;
+            color: black;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            width: 200px;
+            z-index: 100;
+        }
+
+        /* Account Cards */
+        .carousel {
+            margin-top: 20px;
+        }
+
+        .account-card {
+            width: 90%;
+            margin: auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            text-align: left;
+        }
+
+        .account-balance {
+            font-size: 22px;
+            font-weight: bold;
+            color: #2E7D32;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .history-btn {
+            background-color: #FFD700;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 14px;
+            font-weight: bold;
+            color: black;
+            border: none;
+            margin-top: 10px;
+        }
+
+        /* Transaction Shortcuts */
+        .shortcuts {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 20px 10px;
+        }
+
+        .shortcut-card {
+            background-color: #2E7D32;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: transform 0.2s ease-in-out;
+            cursor: pointer;
+        }
+
+        .shortcut-card:hover {
+            transform: scale(1.05);
+        }
+
+        /* Recent Transactions */
+        .recent-transactions {
+            background: white;
+            padding: 15px;
+            margin: 20px 10px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+
+        .transactions-list {
+            display: none;
+            margin-top: 10px;
+        }
+
+        /* Modal Styling */
+        .modal-content {
+            padding: 15px;
+        }
