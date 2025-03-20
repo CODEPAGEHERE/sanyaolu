@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Money</title>
+
+    <!-- Bootstrap & Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <a href="index.html"><i class="bi bi-arrow-left"></i></a>
+        <span>Send Money</span>
+    </header>
+
+    <!-- Transfer Form -->
+    <div class="container mt-4">
+        <form id="sendMoneyForm">
+            <div class="form-group">
+                <label for="recipient">Recipient Name</label>
+                <input type="text" class="form-control" id="recipient" placeholder="Enter recipient name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="accountNumber">Account Number</label>
+                <input type="number" class="form-control" id="accountNumber" placeholder="Enter account number" required>
+            </div>
+
+            <div class="form-group">
+                <label for="amount">Amount (₦)</label>
+                <input type="number" class="form-control" id="amount" placeholder="Enter amount" required>
+            </div>
+
+            <button type="submit" class="btn btn-success btn-block">Send Money</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("sendMoneyForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            let recipient = document.getElementById("recipient").value;
+            let accountNumber = document.getElementById("accountNumber").value;
+            let amount = document.getElementById("amount").value;
+
+            if (recipient && accountNumber && amount > 0) {
+                alert(`₦${amount} sent to ${recipient} (Acc: ${accountNumber}) successfully!`);
+                window.location.href = "index.html"; // Redirect back to home
+            } else {
+                alert("Please fill in all fields correctly.");
+            }
+        });
+    </script>
+
+</body>
+</html>
