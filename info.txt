@@ -1,0 +1,45 @@
+My apologies for the previous miscommunications. Thank you for providing the full project details. I will now outline the plan for the **Sanyaolu Project**, making sure to use the exact technology stack you specified and to describe the project without writing any code.
+
+---
+
+### **Project Overview: Sanyaolu's Golden Jubilee Website**
+
+The Sanyaolu Project is a single-deployment website designed to celebrate your grandma's golden jubilee birthday. It will be a dynamic and interactive site that includes a personalized birthday message, a real-time "hugs" counter, and a public comments section where visitors can leave their wishes. The entire application, including the frontend and backend, will be deployed together as a single unit using serverless functions for the backend logic.
+
+---
+
+### **Technology Stack**
+
+The project will be built with the following technologies, as you specified:
+
+* **Frontend Development:**
+    * **Svelte:** A modern JavaScript framework that compiles your code into small, highly efficient bundles. It is an excellent choice for a fast, reactive, and lightweight user interface.
+    * **Bootstrap 5:** A powerful CSS framework that will provide the base for the responsive layout and core UI components.
+    * **Bootswatch (Lumen):** This theme will be used with Bootstrap to give the website a distinct, bright, and polished visual aesthetic without any custom CSS.
+    * **Bootstrap Icons:** These will be used for any necessary icons, such as a heart for the hugs counter or an arrow for a submit button.
+
+* **Backend & Database:**
+    * **Node.js (Express):** A fast and minimalist web framework for Node.js. It will be used to create the backend API endpoints (for adding comments, updating the hug count, etc.). These Express endpoints will be configured to run as serverless functions.
+    * **MongoDB:** A NoSQL database that will handle the data persistence for the project. It will be used to store the total hug count and all of the comments submitted by visitors.
+
+* **Deployment:**
+    * **Vercel:** This will serve as the deployment platform. It is perfectly suited for this project because it can host the Svelte frontend and automatically detect and deploy the Node.js/Express backend as **serverless functions**, all from a single code repository.
+
+---
+
+### **Project Architecture & Functionality**
+
+The architecture of the Sanyaolu Project is centered on a **monolithic single deployment** with a serverless backend.
+
+1.  **Serverless Backend:** The Node.js/Express backend will not be a traditional long-running server. Instead, each API endpoint (e.g., `/api/hugs`, `/api/comments`) will be a separate, short-lived **serverless function**. When a user interacts with the website, the frontend will make a request to the appropriate endpoint. Vercel will then automatically spin up a function, execute the code, and shut it down.
+
+2.  **Frontend-to-Backend Communication:** The **Svelte** frontend will communicate with these serverless functions.
+    * **Hugs Counter:** When a user clicks the "Send a Hug" button, a Svelte function will trigger an API call to a serverless Express endpoint. This endpoint will connect to the **MongoDB** database to increment the global hug count.
+    * **Comments Section:** When a user submits the comment form, Svelte will package the data and send it to a different serverless Express endpoint. This function will then save the new comment as a document in the **MongoDB** database.
+    * For real-time updates on both the hugs counter and the comments, the Svelte frontend will periodically poll the database via a serverless function to retrieve the latest information.
+
+3.  **User Interface:** The entire look and feel will be driven by **Bootstrap 5** and the **Bootswatch Lumen** theme. The Svelte framework will manage the interactivity, dynamically updating the hug count and comments section as new data becomes available.
+
+This approach ensures the website is lightweight, scalable, and easy to maintain while still providing a professional and interactive experience for all visitors. The single-deployment model on Vercel simplifies the entire development process by keeping the frontend and backend together in one place.
+
+Does this detailed plan for the Sanyaolu Project match your expectations, and would you like me to begin creating the project files based on this architecture and tech stack?
