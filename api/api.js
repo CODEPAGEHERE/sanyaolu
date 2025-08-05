@@ -1,5 +1,3 @@
-// api/api.js
-
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
@@ -8,7 +6,7 @@ const app = express();
 app.use(express.json());
 
 // MongoDB connection string - REPLACE WITH YOUR OWN
-const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/sanyaolu_project';
+const mongoURI = process.env.MONGODB_URI 
 
 // Connect to MongoDB
 mongoose.connect(mongoURI)
@@ -24,11 +22,3 @@ app.get('/api/test', (req, res) => {
 
 // Export the Express app as a serverless function handler for Vercel
 module.exports = app;
-
-// For local development on port 3006
-if (process.env.NODE_ENV !== 'production') {
-  const port = 3006;
-  app.listen(port, () => {
-    console.log(`Backend server listening on http://localhost:${port}`);
-  });
-}
