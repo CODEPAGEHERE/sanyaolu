@@ -431,7 +431,7 @@
 						</p>
 						<div class="mt-4 d-flex justify-content-center justify-content-md-start gap-3">
 							<button class="btn" style="background: linear-gradient(to bottom, #D8BB6F, #282727); color: #191918; border: none; padding: 0.5rem 1rem; font-weight: 600;">Gallery</button>
-							<button class="btn" style="background: linear-gradient(to bottom, #191918, #282727); color: #D8BB6F; border: none; padding: 0.5rem 1rem; font-weight: 600;">Poetry</button>
+							<button class="btn" style="background: linear-gradient(to bottom, #191918, #282727); color: #D8BB6F; border: none; padding: 0.5rem 1rem; font-weight: 600;">Details</button>
 						</div>
 					</div>
                 </div>

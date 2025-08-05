@@ -1,11 +1,19 @@
 <script>
-    import Hero from './components/Hero.svelte';
-    import Gallery from './components/Gallery.svelte';
+    import Hero from './components/hero.svelte';
+    import Gallery from './components/gallery.svelte';
+	import Detail from './components/detail.svelte';
+	import Guests from './components/guest.svelte';
+	import Message from './components/message.svelte';
+	import Footer from './components/footer.svelte';
 </script>
 
 <main>
     <Hero />
     <Gallery />
+	<Detail />
+	<Guests />
+	<Message />
+	<Footer />
 </main>
 
 <style>
