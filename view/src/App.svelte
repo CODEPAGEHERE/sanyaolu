@@ -1,9 +1,11 @@
 <script>
     import Hero from './components/Hero.svelte';
+    import Gallery from './components/Gallery.svelte';
 </script>
 
 <main>
     <Hero />
+    <Gallery />
 </main>
 
 <style>
