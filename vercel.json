@@ -8,6 +8,10 @@
       "config": {
         "packageJsonPath": "api/package.json"
       }
+    },
+    {
+      "src": "view/index.html",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
