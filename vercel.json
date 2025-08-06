@@ -5,26 +5,14 @@
       "src": "api/api.js",
       "use": "@vercel/node",
       "config": {
-        "packageJsonPath": "../package.json"
+        "packageJsonPath": "api/package.json"
       }
-    },
-    {
-      "src": "svelte.config.js",
-      "use": "@sveltejs/adapter-vercel"
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
       "dest": "api/api.js"
-    },
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/view/index.html"
     }
-  ],
-  "installCommand": "npm install"
+  ]
 }
