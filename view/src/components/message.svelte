@@ -70,7 +70,7 @@
 </script>
 
 <div class="container mt-5">
-  <div style="background-color: black; padding: 20px; border-radius: 10px;">
+  <div style=" padding: 20px; border-radius: 10px;">
     <div class="row">
       <div class="col-md-6 mb-3">
         <div style="background-color: white; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
