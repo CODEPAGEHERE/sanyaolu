@@ -6,8 +6,8 @@
       "use": "@vercel/node"
     },
     {
-      "src": "view/**",
-      "use": "@vercel/static"
+      "src": "package.json",
+      "use": "@vercel/static-build"
     }
   ],
   "routes": [
@@ -17,7 +17,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "view/$1"
+      "dest": ".svelte-kit/output/$1"
     }
   ]
 }
