@@ -2,12 +2,12 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/api.js",
-      "use": "@vercel/node"
+      "src": "view/dist/**",
+      "use": "@vercel/static"
     },
     {
-      "src": "package.json",
-      "use": "@vercel/static-build"
+      "src": "api/api.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
@@ -17,7 +17,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": ".svelte-kit/output/$1"
+      "dest": "view/dist/$1"
     }
   ]
 }
