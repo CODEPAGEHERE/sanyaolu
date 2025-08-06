@@ -3,7 +3,10 @@
   "builds": [
     {
       "src": "api/api.js",
-      "use": "@vercel/node"
+      "use": "@vercel/node",
+      "config": {
+        "packageJsonPath": "../package.json"
+      }
     },
     {
       "src": "svelte.config.js",
@@ -23,5 +26,5 @@
       "dest": "/view/index.html"
     }
   ],
-  "installCommand": "npm install --prefix ."
+  "installCommand": "npm install"
 }
