@@ -25,6 +25,14 @@ const messageSchema = new mongoose.Schema({
 // Create a model for messages
 const Message = mongoose.model('Message', messageSchema);
 
+// Define a schema for love count
+const loveCountSchema = new mongoose.Schema({
+  count: { type: Number, default: 0 }
+});
+
+// Create a model for love count
+const LoveCount = mongoose.model('LoveCount', loveCountSchema);
+
 // Route to send a message
 app.post('/api/messages', async (req, res) => {
   try {
@@ -41,6 +49,36 @@ app.get('/api/messages', async (req, res) => {
   try {
     const messages = await Message.find().exec();
     res.send(messages);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+// Route to send love
+app.post('/api/love', async (req, res) => {
+  try {
+    let loveCount = await LoveCount.findOne();
+    if (!loveCount) {
+      loveCount = new LoveCount({ count: 1 });
+    } else {
+      loveCount.count++;
+    }
+    await loveCount.save();
+    res.send({ count: loveCount.count });
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+// Route to retrieve love count
+app.get('/api/love', async (req, res) => {
+  try {
+    let loveCount = await LoveCount.findOne();
+    if (!loveCount) {
+      loveCount = new LoveCount({ count: 0 });
+      await loveCount.save();
+    }
+    res.send({ count: loveCount.count });
   } catch (err) {
     res.status(500).send(err);
   }

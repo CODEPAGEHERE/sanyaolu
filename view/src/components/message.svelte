@@ -9,6 +9,7 @@
 
   onMount(async () => {
     getMessages();
+    getLoveCount();
   });
 
   async function sendMessage() {
@@ -45,8 +46,26 @@
     }
   }
 
-  function sendLove() {
-    loveCount++;
+  async function sendLove() {
+    try {
+      const response = await fetch('/api/love', {
+        method: 'POST',
+      });
+      const data = await response.json();
+      loveCount = data.count;
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  async function getLoveCount() {
+    try {
+      const response = await fetch('/api/love');
+      const data = await response.json();
+      loveCount = data.count;
+    } catch (err) {
+      console.error(err);
+    }
   }
 </script>
 
