@@ -8,6 +8,7 @@
         { name: 'Good Women OlorunTedo' },
         { name: 'Mr & Mrs Kekere Festus' },
         { name: 'Afed Ewupe Zone' },
+		{ name: 'More...' },
     ];
 </script>
 

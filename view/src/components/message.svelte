@@ -1,15 +1,48 @@
 <script>
+  import { onMount } from 'svelte';
+
   let name = '';
   let message = '';
   let messages = [];
   let loveCount = 0;
   let avatars = ['👦', '👧', '🌟', '👨', '🕺', '🧑', '🧔', '💖'];
 
-  function sendMessage() {
+  onMount(async () => {
+    getMessages();
+  });
+
+  async function sendMessage() {
     let randomAvatar = avatars[Math.floor(Math.random() * avatars.length)];
-    messages = [...messages, {name, message, avatar: randomAvatar}];
-    name = '';
-    message = '';
+    try {
+      const response = await fetch('/api/messages', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          message,
+          avatar: randomAvatar,
+        }),
+      });
+      const data = await response.json();
+      console.log(data);
+      name = '';
+      message = '';
+      getMessages();
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  async function getMessages() {
+    try {
+      const response = await fetch('/api/messages');
+      const data = await response.json();
+      messages = data;
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   function sendLove() {
