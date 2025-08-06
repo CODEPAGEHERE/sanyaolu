@@ -1,20 +1,20 @@
 {
   "version": 2,
-  "buildCommand": "npm run build",
-  "outputDirectory": ".svelte-kit/output",
   "builds": [
     {
       "src": "api/api.js",
-      "use": "@vercel/node",
-      "config": {
-        "packageJsonPath": "api/package.json"
-      }
+      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
       "dest": "api/api.js"
+    },
+    {
+      "src": "/(.*)",
+      "static": true,
+      "dest": "view/$1"
     }
   ]
 }
