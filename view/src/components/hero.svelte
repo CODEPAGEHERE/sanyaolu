@@ -24,33 +24,6 @@
         color: #F5EEE3; /* New light text color for paragraphs */
     }
 
-    .golden-button {
-        background-color: #D8BB6F;
-        color: #191918;
-        border: none;
-        padding: 0.75rem 1.5rem;
-        border-radius: 50px;
-        font-weight: 700;
-        transition: background-color 0.3s ease;
-    }
-
-    .golden-button:hover {
-        background-color: #4B4332; /* A darker, professional hover color */
-        color: #D8BB6F;
-    }
-
-    .btn-outline-golden {
-        color: #D8BB6F;
-        border: 2px solid #D8BB6F;
-        transition: all 0.3s ease;
-        border-radius: 50px;
-    }
-    
-    .btn-outline-golden:hover {
-        background-color: #D8BB6F;
-        color: #191918;
-    }
-    
     /* Outermost golden layer with a lean clip-path */
     .outermost-border {
         position: relative;
@@ -291,17 +264,6 @@
         content: none;
     }
     
-    /* Create a single "tied rope" element for the cluster */
-    balloon-cluster-left-bottom::before {
-        content: '';
-        position: absolute;
-        width: 2px;
-        height: 60px; /* The length of the string */
-        background-color: #F5EEE3; /* Light color for the string */
-        bottom: -70px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
 
 
 /* Add these media queries to your existing CSS */
